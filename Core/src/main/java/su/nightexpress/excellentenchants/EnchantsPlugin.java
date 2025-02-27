@@ -26,12 +26,12 @@ import su.nightexpress.nightcore.config.PluginDetails;
 import su.nightexpress.nightcore.util.Plugins;
 import su.nightexpress.nightcore.util.Version;
 
-public class EnchantsPlugin extends NightPlugin implements ImprovedCommands {
+public abstract class EnchantsPlugin extends NightPlugin implements ImprovedCommands {
 
     private EnchantRegistry registry;
-    private RarityManager   rarityManager;
-    private EnchantManager  enchantManager;
-    private EnchantNMS      enchantNMS;
+    private RarityManager rarityManager;
+    private EnchantManager enchantManager;
+    private EnchantNMS enchantNMS;
 
     @Override
     public void onLoad() {
@@ -43,9 +43,9 @@ public class EnchantsPlugin extends NightPlugin implements ImprovedCommands {
     @NotNull
     protected PluginDetails getDefaultDetails() {
         return PluginDetails.create("Enchants", new String[]{"eenchants", "excellentenchants"})
-            .setConfigClass(Config.class)
-            .setLangClass(Lang.class)
-            .setPermissionsClass(Perms.class);
+                .setConfigClass(Config.class)
+                .setLangClass(Lang.class)
+                .setPermissionsClass(Perms.class);
     }
 
     @Override
@@ -114,11 +114,9 @@ public class EnchantsPlugin extends NightPlugin implements ImprovedCommands {
         if (Config.isDescriptionEnabled()) {
             if (Plugins.isInstalled(HookPlugin.PACKET_EVENTS)) {
                 PacketEventsHook.setup(this);
-            }
-            else if (Plugins.isInstalled(HookPlugin.PROTOCOL_LIB)) {
+            } else if (Plugins.isInstalled(HookPlugin.PROTOCOL_LIB)) {
                 ProtocolLibHook.setup(this);
-            }
-            else {
+            } else {
                 this.warn("You need to install " + HookPlugin.PACKET_EVENTS + " or " + HookPlugin.PROTOCOL_LIB + " for enchantment description to work.");
             }
         }
@@ -151,5 +149,9 @@ public class EnchantsPlugin extends NightPlugin implements ImprovedCommands {
     @NotNull
     public EnchantNMS getEnchantNMS() {
         return enchantNMS;
+    }
+
+    public boolean isPaper() {
+        return false;
     }
 }
