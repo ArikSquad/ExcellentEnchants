@@ -26,7 +26,7 @@ import su.nightexpress.nightcore.config.PluginDetails;
 import su.nightexpress.nightcore.util.Plugins;
 import su.nightexpress.nightcore.util.Version;
 
-public abstract class EnchantsPlugin extends NightPlugin implements ImprovedCommands {
+public class EnchantsPlugin extends NightPlugin implements ImprovedCommands {
 
     private EnchantRegistry registry;
     private RarityManager rarityManager;
@@ -37,6 +37,7 @@ public abstract class EnchantsPlugin extends NightPlugin implements ImprovedComm
     public void onLoad() {
         super.onLoad();
         this.registry = new EnchantRegistry(this);
+        PluginHolder.INSTANCE = this;
     }
 
     @Override

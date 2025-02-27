@@ -56,6 +56,7 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.21.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -156,6 +157,8 @@
                             <artifactSet>
                                 <includes>
                                     <include>su.nightexpress.excellentenchants*</include>
+                                    <include>su.nightexpress.nightcore.util*</include>
+                                    <include>su.nightexpress.nightcore.manager.AbstractFileData</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
